@@ -1,0 +1,503 @@
+{
+  "summary": {
+    "total_tests": 20,
+    "passed": 19,
+    "failed": 1,
+    "pass_rate": "95%",
+    "avg_faithfulness": 0.9,
+    "avg_recall": 0.8,
+    "avg_precision": 1.0,
+    "failure_modes": {
+      "missing_relevant_content": 3
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "company": "AAPL",
+      "quarter": "Q1",
+      "question": "What did Apple say about iPhone revenue?",
+      "recall": {
+        "matched_keywords": [
+          "iPhone",
+          "revenue",
+          "billion"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 2,
+      "company": "AAPL",
+      "quarter": "Q1",
+      "question": "How did Apple discuss services growth?",
+      "recall": {
+        "matched_keywords": [
+          "services",
+          "growth",
+          "record"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 3,
+      "company": "AAPL",
+      "quarter": "Q1",
+      "question": "What was Apple's gross margin?",
+      "recall": {
+        "matched_keywords": [
+          "margin",
+          "gross"
+        ],
+        "missing_keywords": [
+          "percent"
+        ],
+        "recall_score": 0.67
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.83,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 4,
+      "company": "AAPL",
+      "quarter": "Q1",
+      "question": "What did management say about China?",
+      "recall": {
+        "matched_keywords": [
+          "China",
+          "market",
+          "demand"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 5,
+      "company": "AAPL",
+      "quarter": "Q1",
+      "question": "How did Apple discuss Mac revenue?",
+      "recall": {
+        "matched_keywords": [
+          "Mac",
+          "revenue",
+          "billion"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 6,
+      "company": "AAPL",
+      "quarter": "Q3",
+      "question": "What did Apple say about supply chain?",
+      "recall": {
+        "matched_keywords": [
+          "supply",
+          "demand"
+        ],
+        "missing_keywords": [
+          "chain"
+        ],
+        "recall_score": 0.67
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.83,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 7,
+      "company": "AAPL",
+      "quarter": "Q3",
+      "question": "How did management discuss future guidance?",
+      "recall": {
+        "matched_keywords": [
+          "expect",
+          "quarter"
+        ],
+        "missing_keywords": [
+          "guidance"
+        ],
+        "recall_score": 0.67
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.83,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 8,
+      "company": "AAPL",
+      "quarter": "Q3",
+      "question": "What did Apple say about wearables?",
+      "recall": {
+        "matched_keywords": [
+          "wearables",
+          "watch",
+          "revenue"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 9,
+      "company": "AAPL",
+      "quarter": "Q3",
+      "question": "How did Apple discuss operating expenses?",
+      "recall": {
+        "matched_keywords": [
+          "operating",
+          "expenses",
+          "billion"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 10,
+      "company": "AAPL",
+      "quarter": "Q3",
+      "question": "What did Tim Cook say about innovation?",
+      "recall": {
+        "matched_keywords": [
+          "product",
+          "customer"
+        ],
+        "missing_keywords": [
+          "innovation"
+        ],
+        "recall_score": 0.67
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.83,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 11,
+      "company": "NVDA",
+      "quarter": "Q1",
+      "question": "What did Nvidia say about data center revenue?",
+      "recall": {
+        "matched_keywords": [
+          "revenue"
+        ],
+        "missing_keywords": [
+          "data",
+          "center"
+        ],
+        "recall_score": 0.33
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.67,
+      "failure_mode": "missing_relevant_content",
+      "passed": true
+    },
+    {
+      "id": 12,
+      "company": "NVDA",
+      "quarter": "Q1",
+      "question": "How did Nvidia discuss gaming segment?",
+      "recall": {
+        "matched_keywords": [
+          "gaming",
+          "revenue",
+          "GPU"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 13,
+      "company": "NVDA",
+      "quarter": "Q1",
+      "question": "What did management say about AI demand?",
+      "recall": {
+        "matched_keywords": [
+          "AI",
+          "demand",
+          "growth"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q1",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 14,
+      "company": "NVDA",
+      "quarter": "Q2",
+      "question": "How did Nvidia discuss gross margins?",
+      "recall": {
+        "matched_keywords": [],
+        "missing_keywords": [
+          "margin",
+          "gross",
+          "percent"
+        ],
+        "recall_score": 0.0
+      },
+      "precision": {
+        "expected_quarter": "Q2",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.5,
+      "failure_mode": "missing_relevant_content",
+      "passed": false
+    },
+    {
+      "id": 15,
+      "company": "NVDA",
+      "quarter": "Q2",
+      "question": "What did Nvidia say about supply constraints?",
+      "recall": {
+        "matched_keywords": [
+          "supply",
+          "demand"
+        ],
+        "missing_keywords": [
+          "constraints"
+        ],
+        "recall_score": 0.67
+      },
+      "precision": {
+        "expected_quarter": "Q2",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.83,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 16,
+      "company": "NVDA",
+      "quarter": "Q2",
+      "question": "How did management discuss competition?",
+      "recall": {
+        "matched_keywords": [
+          "market"
+        ],
+        "missing_keywords": [
+          "competition",
+          "leadership"
+        ],
+        "recall_score": 0.33
+      },
+      "precision": {
+        "expected_quarter": "Q2",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 0.67,
+      "failure_mode": "missing_relevant_content",
+      "passed": true
+    },
+    {
+      "id": 17,
+      "company": "NVDA",
+      "quarter": "Q3",
+      "question": "What did Nvidia say about automotive segment?",
+      "recall": {
+        "matched_keywords": [
+          "automotive",
+          "revenue",
+          "design"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 18,
+      "company": "NVDA",
+      "quarter": "Q3",
+      "question": "How did Nvidia discuss professional visualization?",
+      "recall": {
+        "matched_keywords": [
+          "professional",
+          "visualization",
+          "workstation"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 19,
+      "company": "AAPL",
+      "quarter": "Q2",
+      "question": "What did Apple say about iPad revenue?",
+      "recall": {
+        "matched_keywords": [
+          "iPad",
+          "revenue",
+          "billion"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q2",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    },
+    {
+      "id": 20,
+      "company": "NVDA",
+      "quarter": "Q3",
+      "question": "How did management discuss future outlook?",
+      "recall": {
+        "matched_keywords": [
+          "outlook",
+          "growth",
+          "expect"
+        ],
+        "missing_keywords": [],
+        "recall_score": 1.0
+      },
+      "precision": {
+        "expected_quarter": "Q3",
+        "correct_chunks": 5,
+        "total_chunks": 5,
+        "precision_score": 1.0
+      },
+      "faithfulness_score": 1.0,
+      "failure_mode": null,
+      "passed": true
+    }
+  ]
+}

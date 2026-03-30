@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "company": "AAPL",
+    "quarter": "Q1",
+    "question": "What did Apple say about iPhone revenue?",
+    "expected_keywords": ["iPhone", "revenue", "billion"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 2,
+    "company": "AAPL",
+    "quarter": "Q1",
+    "question": "How did Apple discuss services growth?",
+    "expected_keywords": ["services", "growth", "record"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 3,
+    "company": "AAPL",
+    "quarter": "Q1",
+    "question": "What was Apple's gross margin?",
+    "expected_keywords": ["margin", "gross", "percent"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 4,
+    "company": "AAPL",
+    "quarter": "Q1",
+    "question": "What did management say about China?",
+    "expected_keywords": ["China", "market", "demand"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 5,
+    "company": "AAPL",
+    "quarter": "Q1",
+    "question": "How did Apple discuss Mac revenue?",
+    "expected_keywords": ["Mac", "revenue", "billion"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 6,
+    "company": "AAPL",
+    "quarter": "Q3",
+    "question": "What did Apple say about supply chain?",
+    "expected_keywords": ["supply", "chain", "demand"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 7,
+    "company": "AAPL",
+    "quarter": "Q3",
+    "question": "How did management discuss future guidance?",
+    "expected_keywords": ["guidance", "expect", "quarter"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 8,
+    "company": "AAPL",
+    "quarter": "Q3",
+    "question": "What did Apple say about wearables?",
+    "expected_keywords": ["wearables", "watch", "revenue"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 9,
+    "company": "AAPL",
+    "quarter": "Q3",
+    "question": "How did Apple discuss operating expenses?",
+    "expected_keywords": ["operating", "expenses", "billion"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 10,
+    "company": "AAPL",
+    "quarter": "Q3",
+    "question": "What did Tim Cook say about innovation?",
+    "expected_keywords": ["innovation", "product", "customer"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 11,
+    "company": "NVDA",
+    "quarter": "Q1",
+    "question": "What did Nvidia say about data center revenue?",
+    "expected_keywords": ["data", "center", "revenue"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 12,
+    "company": "NVDA",
+    "quarter": "Q1",
+    "question": "How did Nvidia discuss gaming segment?",
+    "expected_keywords": ["gaming", "revenue", "GPU"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 13,
+    "company": "NVDA",
+    "quarter": "Q1",
+    "question": "What did management say about AI demand?",
+    "expected_keywords": ["AI", "demand", "growth"],
+    "expected_quarter": "Q1"
+  },
+  {
+    "id": 14,
+    "company": "NVDA",
+    "quarter": "Q2",
+    "question": "How did Nvidia discuss gross margins?",
+    "expected_keywords": ["margin", "gross", "percent"],
+    "expected_quarter": "Q2"
+  },
+  {
+    "id": 15,
+    "company": "NVDA",
+    "quarter": "Q2",
+    "question": "What did Nvidia say about supply constraints?",
+    "expected_keywords": ["supply", "demand", "constraints"],
+    "expected_quarter": "Q2"
+  },
+  {
+    "id": 16,
+    "company": "NVDA",
+    "quarter": "Q2",
+    "question": "How did management discuss competition?",
+    "expected_keywords": ["competition", "market", "leadership"],
+    "expected_quarter": "Q2"
+  },
+  {
+    "id": 17,
+    "company": "NVDA",
+    "quarter": "Q3",
+    "question": "What did Nvidia say about automotive segment?",
+    "expected_keywords": ["automotive", "revenue", "design"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 18,
+    "company": "NVDA",
+    "quarter": "Q3",
+    "question": "How did Nvidia discuss professional visualization?",
+    "expected_keywords": ["professional", "visualization", "workstation"],
+    "expected_quarter": "Q3"
+  },
+  {
+    "id": 19,
+    "company": "AAPL",
+    "quarter": "Q2",
+    "question": "What did Apple say about iPad revenue?",
+    "expected_keywords": ["iPad", "revenue", "billion"],
+    "expected_quarter": "Q2"
+  },
+  {
+    "id": 20,
+    "company": "NVDA",
+    "quarter": "Q3",
+    "question": "How did management discuss future outlook?",
+    "expected_keywords": ["outlook", "growth", "expect"],
+    "expected_quarter": "Q3"
+  }
+]
