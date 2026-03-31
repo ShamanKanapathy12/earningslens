@@ -1,57 +1,44 @@
+import os
 import json
+from groq import Groq
+from dotenv import load_dotenv
 
-POSITIVE_WORDS = [
-    "growth", "record", "strong", "exceeded", "beat", "momentum", "confident",
-    "optimistic", "opportunity", "expanded", "increased", "gained", "robust",
-    "outperformed", "accelerating", "raised", "upside", "demand", "innovation"
-]
-
-NEGATIVE_WORDS = [
-    "decline", "weak", "challenging", "headwind", "uncertain", "cautious",
-    "slowdown", "missed", "pressure", "risk", "concern", "volatile", "reduced",
-    "difficult", "lower", "soft", "macro", "uncertainty", "disappointed"
-]
-
-CAUTION_WORDS = [
-    "may", "might", "could", "potentially", "possible", "expect", "anticipate",
-    "approximately", "roughly", "subject to", "depending", "if", "assuming",
-    "cautious", "monitor", "watch", "careful", "prudent", "conservative"
-]
+load_dotenv()
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def score_sentiment(chunks: list, company: str, quarter: str) -> dict:
-    combined_text = " ".join([c["text"] for c in chunks]).lower()
-    words = combined_text.split()
-    total_words = len(words)
+    combined_text = "\n\n".join([c["text"] for c in chunks])[:4000]
 
-    pos_count = sum(1 for w in words if w.strip(".,!?") in POSITIVE_WORDS)
-    neg_count = sum(1 for w in words if w.strip(".,!?") in NEGATIVE_WORDS)
-    cau_count = sum(1 for w in words if w.strip(".,!?") in CAUTION_WORDS)
+    prompt = f"""You are a financial analyst reading an earnings call transcript.
 
-    # Normalize to 0-100
-    pos_ratio = min(pos_count / max(total_words, 1) * 500, 100)
-    neg_ratio = min(neg_count / max(total_words, 1) * 500, 100)
-    cau_ratio = min(cau_count / max(total_words, 1) * 500, 100)
+Below is an excerpt from {company}'s {quarter} earnings call:
 
-    optimism = round(max(0, min(100, 50 + pos_ratio - neg_ratio)))
-    caution = round(min(100, cau_ratio * 2))
-    growth_confidence = round(max(0, min(100, optimism - caution * 0.3)))
-    uncertainty = round(min(100, caution * 0.8 + neg_ratio * 0.5))
+{combined_text}
 
-    # Simple summary
-    if optimism > 60:
-        tone = "positive and confident"
-    elif optimism < 40:
-        tone = "cautious and concerned"
-    else:
-        tone = "neutral with mixed signals"
+Score the management's tone on these 4 dimensions from 0 to 100:
+- optimism: how positive and confident is the tone? (0=very pessimistic, 100=very optimistic)
+- caution: how cautious or hedging is the language? (0=no caution, 100=extremely cautious)
+- growth_confidence: how confident are they about future growth? (0=no confidence, 100=very confident)
+- uncertainty: how much uncertainty do they express? (0=no uncertainty, 100=very uncertain)
 
-    return {
-        "optimism": optimism,
-        "caution": caution,
-        "growth_confidence": growth_confidence,
-        "uncertainty": uncertainty,
-        "summary": f"Management tone was {tone} in {quarter} ({pos_count} positive, {neg_count} negative signals)"
-    }
+Respond ONLY with a JSON object, no explanation, no markdown backticks:
+{{
+  "optimism": 75,
+  "caution": 30,
+  "growth_confidence": 70,
+  "uncertainty": 25,
+  "summary": "One sentence summary of the overall tone"
+}}"""
+
+    response = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0
+    )
+
+    raw = response.choices[0].message.content.strip()
+    raw = raw.replace("```json", "").replace("```", "").strip()
+    return json.loads(raw)
 
 def compare_sentiment(company: str, quarter_a_chunks: list, quarter_b_chunks: list,
                       quarter_a_label: str, quarter_b_label: str) -> dict:

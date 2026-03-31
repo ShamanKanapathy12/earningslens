@@ -1,5 +1,11 @@
+import os
+from groq import Groq
+from dotenv import load_dotenv
 from agent.tools import retrieve_context, compare_quarters
 from agent.sentiment import compare_sentiment
+
+load_dotenv()
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def run_agent(user_question: str, company: str, quarter_a: str, quarter_b: str) -> dict:
     print(f"\nAgent starting...")
@@ -25,27 +31,43 @@ def run_agent(user_question: str, company: str, quarter_a: str, quarter_b: str) 
     score_b = sentiment["quarter_b"]["scores"]
     delta = sentiment["delta"]
 
-    opt_change = "improved" if delta["optimism"] > 0 else "declined"
-    cau_change = "increased" if delta["caution"] > 0 else "decreased"
+    context_a = "\n".join([f"[{quarter_a} source {i+1}]: {c['text'][:300]}"
+                           for i, c in enumerate(chunks_a)])
+    context_b = "\n".join([f"[{quarter_b} source {i+1}]: {c['text'][:300]}"
+                           for i, c in enumerate(chunks_b)])
 
-    sources_a = [f"[{quarter_a} source {i+1}]: {c['text'][:150]}..." for i, c in enumerate(chunks_a[:2])]
-    sources_b = [f"[{quarter_b} source {i+1}]: {c['text'][:150]}..." for i, c in enumerate(chunks_b[:2])]
+    prompt = f"""You are a senior financial analyst. A user asked:
+"{user_question}"
 
-    answer = f"""Analysis for {company} — {quarter_a} vs {quarter_b}
+You are comparing {company}'s earnings calls from {quarter_a} and {quarter_b}.
 
-{quarter_a} tone: {score_a['summary']}
-{quarter_b} tone: {score_b['summary']}
+{quarter_a} sentiment scores: optimism={score_a['optimism']}, caution={score_a['caution']}, growth_confidence={score_a['growth_confidence']}, uncertainty={score_a['uncertainty']}
+{quarter_a} summary: {score_a['summary']}
 
-Sentiment shift: Optimism {opt_change} by {abs(delta['optimism'])} points. Caution {cau_change} by {abs(delta['caution'])} points.
-Growth confidence moved from {score_a['growth_confidence']} to {score_b['growth_confidence']}.
+{quarter_b} sentiment scores: optimism={score_b['optimism']}, caution={score_b['caution']}, growth_confidence={score_b['growth_confidence']}, uncertainty={score_b['uncertainty']}
+{quarter_b} summary: {score_b['summary']}
 
-Key passages from {quarter_a}:
-{sources_a[0]}
+{quarter_a} transcript excerpts:
+{context_a}
 
-Key passages from {quarter_b}:
-{sources_b[0]}
+{quarter_b} transcript excerpts:
+{context_b}
 
-Verdict: Management tone {'strengthened' if delta['optimism'] > 0 else 'weakened'} between {quarter_a} and {quarter_b}."""
+Write a clear 4-5 sentence analyst-style response that:
+1. Directly answers the user's question
+2. Compares the tone and content between the two quarters
+3. References specific sources like [Q1 source 1] as evidence
+4. Ends with a one-line verdict on how management tone shifted
+
+Be specific and analytical, not generic."""
+
+    response = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3
+    )
+
+    final_answer = response.choices[0].message.content.strip()
 
     return {
         "question": user_question,
@@ -53,7 +75,7 @@ Verdict: Management tone {'strengthened' if delta['optimism'] > 0 else 'weakened
         "quarter_a": quarter_a,
         "quarter_b": quarter_b,
         "sentiment": sentiment,
-        "answer": answer,
+        "answer": final_answer,
         "sources": {quarter_a: chunks_a, quarter_b: chunks_b}
     }
 

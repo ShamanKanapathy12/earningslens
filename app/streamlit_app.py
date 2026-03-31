@@ -20,18 +20,28 @@ with st.sidebar:
     quarter_a = st.selectbox("Compare Quarter A", ["Q1", "Q2", "Q3"], index=0)
     quarter_b = st.selectbox("Compare Quarter B", ["Q1", "Q2", "Q3"], index=2)
     st.divider()
+    st.markdown("**Sample questions:**")
+    st.caption("How did management discuss iPhone revenue and demand?")
+    st.caption("What did Apple say about services growth and future outlook?")
+    st.caption("How did management tone change regarding China?")
+    st.caption("What did the CFO say about gross margins?")
+    st.caption("How did Nvidiscuss data center growth?")
+    st.caption("What did management say about AI and GPU demand?")
+    st.divider()
     st.caption("Data sourced from real earnings call transcripts")
 
 st.subheader("Ask a question")
 question = st.text_input(
     "Question",
-    value="How did management discuss revenue growth and future outlook?",
+    placeholder="e.g. How did management discuss iPhone revenue and demand?",
     label_visibility="collapsed"
 )
 
 if st.button("Analyze", type="primary"):
-    if quarter_a == quarter_b:
-        st.error("Pleselect two different quarters to compare.")
+    if not question.strip():
+        st.warning("Please enter a question before analyzing.")
+    elif quarter_a == quarter_b:
+        st.error("Please select two different quarters to compare.")
     else:
         with st.spinner(f"Analyzing {company} {quarter_a} vs {quarter_b}..."):
             result = run_agent(
